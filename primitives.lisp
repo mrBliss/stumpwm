@@ -200,12 +200,6 @@ be an integer.")
   "A hook called whenever a window sets the property indicating that
   it demands the user's attention")
 
-(defvar *map-window-hook* '()
-  "A hook called whenever a window is mapped.")
-
-(defvar *unmap-window-hook* '()
-  "A hook called whenever a window is withdrawn.")
-
 (defvar *new-window-hook* '()
   "A hook called whenever a window is added to the window list. This
 includes a genuinely new window as well as bringing a withdrawn window
