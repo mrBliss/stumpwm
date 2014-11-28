@@ -272,11 +272,13 @@ Groups are known as \"virtual desktops\" in the NETWM standard."
 
 (defun kill-group (group to-group)
   (unless (eq group to-group)
-    (let ((screen (group-screen group)))
+    (let ((screen (group-screen group))
+          (number (group-number group)))
       (merge-groups group to-group)
       (setf (screen-groups screen) (remove group (screen-groups screen)))
       (netwm-update-groups screen)
-      (netwm-set-group-properties screen))))
+      (netwm-set-group-properties screen)
+      (run-hook-with-args *kill-group-hook* number))))
 
 (defun add-group (screen name &key background (type *default-group-type*))
   "Create a new group in SCREEN with the supplied name. group names
@@ -302,6 +304,7 @@ Groups are known as \"virtual desktops\" in the NETWM standard."
                       ng))))
         (unless background
           (switch-to-group ng))
+        (run-hook-with-args *new-group-hook* ng)
         ng)))
 
 (defun find-group (screen name)

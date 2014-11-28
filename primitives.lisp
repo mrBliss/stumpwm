@@ -52,6 +52,8 @@
           *message-hook*
           *top-level-error-hook*
           *focus-group-hook*
+          *new-group-hook*
+          *kill-group-hook*
           *key-press-hook*
           *root-click-hook*
           *new-mode-line-hook*
@@ -256,6 +258,14 @@ run before the error is dealt with according to
 
 (defvar *focus-group-hook* '()
   "A hook called whenever stumpwm switches groups. It is called with 2 arguments: the current group and the last group.")
+
+(defvar *new-group-hook* '()
+  "A hook called when a new group is created. The hook is called with
+the newly created group as argument.")
+
+(defvar *kill-group-hook* '()
+  "A hook called whenever a group is killed. The hook is called with
+the number of the killed group")
 
 (defvar *key-press-hook* '()
   "A hook called whenever a key under *top-map* is pressed.
