@@ -49,6 +49,7 @@
           *focus-frame-hook*
           *new-frame-hook*
           *split-frame-hook*
+          *remove-frame-hook*
           *message-hook*
           *top-level-error-hook*
           *focus-group-hook*
@@ -245,6 +246,9 @@ the frame as an argument.")
 (defvar *split-frame-hook* '()
   "A hook called when a frame is split. the hook is called with
 the old frame (window is removed), and two new frames as arguments.")
+
+(defvar *remove-frame-hook* '()
+  "A hook called whenever a frame is removed.")
 
 (defvar *message-hook* '()
   "A hook called whenever stumpwm displays a message. The hook
