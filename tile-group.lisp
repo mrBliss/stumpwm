@@ -963,7 +963,8 @@ space."
           (if (frame-window frame)
               (update-decoration (frame-window frame))
               (show-frame-indicator group))
-          (sync-frame-windows group (tile-group-current-frame group))))))
+          (sync-frame-windows group (tile-group-current-frame group))
+          (run-hook *remove-frame-hook*)))))
 
 (defcommand (curframe tile-group) () ()
 "Display a window indicating which frame is focused."
