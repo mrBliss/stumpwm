@@ -940,11 +940,9 @@ space."
 
 (defcommand-alias remove remove-split)
 
-(defcommand (only tile-group) () ()
+(defcommand (only tile-group) (&optional (group (current-group))) (:group)
   "Delete all the frames but the current one and grow it to take up the entire head."
-  (let* ((screen (current-screen))
-         (group (screen-current-group screen))
-         (win (group-current-window group))
+  (let* ((win (group-current-window group))
          (head (current-head group))
          (frame (copy-frame head)))
     (if (atom (tile-group-frame-head group head))
